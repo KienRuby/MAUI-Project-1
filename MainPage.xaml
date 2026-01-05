@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartHomeDashboard.MainPage"
+             BackgroundColor="{StaticResource PageBackground}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!-- Colors -->
+            <Color x:Key="PrimaryColor">#6C63FF</Color>
+            <Color x:Key="SecondaryColor">#FF6584</Color>
+            <Color x:Key="PageBackground">#F5F7FA</Color>
+            <Color x:Key="CardBackground">#FFFFFF</Color>
+            <Color x:Key="TextPrimary">#2D3748</Color>
+            <Color x:Key="TextSecondary">#718096</Color>
+            <Color x:Key="SuccessColor">#48BB78</Color>
+            <Color x:Key="WarningColor">#F6AD55</Color>
+
+            <!-- Font Sizes -->
+            <x:Double x:Key="HeaderFontSize">28</x:Double>
+            <x:Double x:Key="SubHeaderFontSize">16</x:Double>
+            <x:Double x:Key="TitleFontSize">18</x:Double>
+            <x:Double x:Key="BodyFontSize">14</x:Double>
+            <x:Double x:Key="SmallFontSize">12</x:Double>
+
+            <!-- Spacing -->
+            <x:Double x:Key="CardSpacing">16</x:Double>
+            <x:Double x:Key="SectionSpacing">20</x:Double>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <Grid Padding="20" RowSpacing="{StaticResource SectionSpacing}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Header Section -->
+            <Grid Grid.Row="0" RowSpacing="8">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0"
+                       Text="Smart Home Dashboard"
+                       FontSize="{StaticResource HeaderFontSize}"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource TextPrimary}" />
+
+                <Label Grid.Row="0" Grid.Column="1"
+                       Text="🏠"
+                       FontSize="40"
+                       VerticalOptions="Center" />
+
+                <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                       Text="Living Room Overview"
+                       FontSize="{StaticResource SubHeaderFontSize}"
+                       TextColor="{StaticResource TextSecondary}" />
+            </Grid>
+
+            <!-- Weather Card -->
+            <Frame Grid.Row="1"
+                   BackgroundColor="{StaticResource CardBackground}"
+                   CornerRadius="16"
+                   HasShadow="True"
+                   Padding="20">
+                <HorizontalStackLayout Spacing="15" VerticalOptions="Center">
+                    <Label Text="☁️"
+                           FontSize="60" />
+
+                    <VerticalStackLayout Spacing="4" VerticalOptions="Center">
+                        <Label Text="24°C"
+                               FontSize="32"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource PrimaryColor}" />
+                        <Label Text="Partly Cloudy"
+                               FontSize="{StaticResource BodyFontSize}"
+                               TextColor="{StaticResource TextSecondary}" />
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="6" HorizontalOptions="EndAndExpand">
+                        <HorizontalStackLayout Spacing="8">
+                            <Label Text="💧" FontSize="16" />
+                            <Label Text="65%" 
+                                   FontSize="{StaticResource SmallFontSize}"
+                                   TextColor="{StaticResource TextSecondary}" />
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="8">
+                            <Label Text="💨" FontSize="16" />
+                            <Label Text="12 km/h" 
+                                   FontSize="{StaticResource SmallFontSize}"
+                                   TextColor="{StaticResource TextSecondary}" />
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+            </Frame>
+
+            <!-- Device Control Cards -->
+            <Grid Grid.Row="2" 
+                  RowSpacing="{StaticResource CardSpacing}" 
+                  ColumnSpacing="{StaticResource CardSpacing}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Light Control Card -->
+                <Frame Grid.Row="0" Grid.Column="0"
+                       BackgroundColor="{StaticResource CardBackground}"
+                       CornerRadius="16"
+                       HasShadow="True"
+                       Padding="16">
+                    <VerticalStackLayout Spacing="12">
+                        <Label Text="💡"
+                               FontSize="48"
+                               HorizontalOptions="Start" />
+
+                        <Label Text="Smart Light"
+                               FontSize="{StaticResource TitleFontSize}"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource TextPrimary}" />
+
+                        <Label Text="ON"
+                               FontSize="{StaticResource BodyFontSize}"
+                               TextColor="{StaticResource SuccessColor}"
+                               FontAttributes="Bold" />
+
+                        <Switch IsToggled="True"
+                                OnColor="{StaticResource PrimaryColor}"
+                                ThumbColor="White"
+                                HorizontalOptions="Start" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Fan Control Card -->
+                <Frame Grid.Row="0" Grid.Column="1"
+                       BackgroundColor="{StaticResource CardBackground}"
+                       CornerRadius="16"
+                       HasShadow="True"
+                       Padding="16">
+                    <VerticalStackLayout Spacing="12">
+                        <Label Text="🌀"
+                               FontSize="48"
+                               HorizontalOptions="Start" />
+
+                        <Label Text="Ceiling Fan"
+                               FontSize="{StaticResource TitleFontSize}"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource TextPrimary}" />
+
+                        <Label Text="OFF"
+                               FontSize="{StaticResource BodyFontSize}"
+                               TextColor="{StaticResource TextSecondary}" />
+
+                        <Switch IsToggled="False"
+                                OnColor="{StaticResource PrimaryColor}"
+                                ThumbColor="White"
+                                HorizontalOptions="Start" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Air Conditioner Control Card -->
+                <Frame Grid.Row="1" Grid.Column="0"
+                       BackgroundColor="{StaticResource CardBackground}"
+                       CornerRadius="16"
+                       HasShadow="True"
+                       Padding="16">
+                    <VerticalStackLayout Spacing="12">
+                        <Label Text="❄️"
+                               FontSize="48"
+                               HorizontalOptions="Start" />
+
+                        <Label Text="Air Conditioner"
+                               FontSize="{StaticResource TitleFontSize}"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource TextPrimary}" />
+
+                        <Label Text="ON"
+                               FontSize="{StaticResource BodyFontSize}"
+                               TextColor="{StaticResource SuccessColor}"
+                               FontAttributes="Bold" />
+
+                        <Switch IsToggled="True"
+                                OnColor="{StaticResource PrimaryColor}"
+                                ThumbColor="White"
+                                HorizontalOptions="Start" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Security Control Card -->
+                <Frame Grid.Row="1" Grid.Column="1"
+                       BackgroundColor="{StaticResource CardBackground}"
+                       CornerRadius="16"
+                       HasShadow="True"
+                       Padding="16">
+                    <VerticalStackLayout Spacing="12">
+                        <Label Text="🔒"
+                               FontSize="48"
+                               HorizontalOptions="Start" />
+
+                        <Label Text="Security"
+                               FontSize="{StaticResource TitleFontSize}"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource TextPrimary}" />
+
+                        <Label Text="ON"
+                               FontSize="{StaticResource BodyFontSize}"
+                               TextColor="{StaticResource SuccessColor}"
+                               FontAttributes="Bold" />
+
+                        <Switch IsToggled="True"
+                                OnColor="{StaticResource PrimaryColor}"
+                                ThumbColor="White"
+                                HorizontalOptions="Start" />
+                    </VerticalStackLayout>
+                </Frame>
+            </Grid>
+
+            <!-- Energy Usage Summary -->
+            <Frame Grid.Row="3"
+                   BackgroundColor="{StaticResource CardBackground}"
+                   CornerRadius="16"
+                   HasShadow="True"
+                   Padding="20">
+                <VerticalStackLayout Spacing="12">
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="⚡" FontSize="24" VerticalOptions="Center" />
+                        <Label Text="Today's Energy Usage"
+                               FontSize="{StaticResource TitleFontSize}"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource TextPrimary}"
+                               VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="10" Margin="0,8,0,0">
+                        <Label Text="68%"
+                               FontSize="24"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource WarningColor}"
+                               VerticalOptions="Center" />
+                        <Label Text="of daily limit"
+                               FontSize="{StaticResource BodyFontSize}"
+                               TextColor="{StaticResource TextSecondary}"
+                               VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+
+                    <ProgressBar Progress="0.68"
+                                 ProgressColor="{StaticResource WarningColor}"
+                                 HeightRequest="12"
+                                 Margin="0,8,0,0" />
+
+                    <Label Text="17.2 kWh used • 8.3 kWh remaining"
+                           FontSize="{StaticResource SmallFontSize}"
+                           TextColor="{StaticResource TextSecondary}"
+                           Margin="0,4,0,0" />
+                </VerticalStackLayout>
+            </Frame>
+        </Grid>
+    </ScrollView>
+</ContentPage>
